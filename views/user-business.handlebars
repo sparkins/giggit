@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giggit</title>
+</head>
+
+<style>
+    * {
+        font-family: 'gruppo', cursive;
+    }
+
+    /* styles for business info here */
+
+    #businessNameDisplay {
+        border: 2px dashed rgb(188, 248, 186);
+        border-top-left-radius: 100%;
+        margin-top: 10px;
+        width: 35%;
+    }
+    #businessnamediv {
+        font-size: 30px;
+        color: rgb(49, 136, 165);
+    }
+    #businesscategorydiv {
+        font-size: 26px;
+        color: rgb(177, 225, 241);
+        padding-left: 12px;
+        margin-left: 12px;
+        border-left: 3px ridge white;
+    }
+    #globeImg {
+        height: 80px;
+    }
+    .starRating {
+        height: 40px;
+    }
+
+    /* styles to request a quote */
+
+    #getquoteBtn {
+        border: gold;
+        width: 250px;
+        height: 80px;
+        font-size: 24px;
+        margin-bottom: 24px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background: url('https://i.imgur.com/NWwaHUd.jpg?1');
+        color: rgb(6, 36, 48);
+        text-shadow: 1px 1px rgb(48, 47, 44);
+        font-weight: bold;   
+    }
+
+    #getquoteBtn:hover {
+        border: 3px ridge rgb(224, 242, 248);
+        background: rgb(42, 97, 119);
+        color: white;
+        text-shadow: 2px 2px rgb(22, 62, 78);
+        width: 280px;
+        font-size: 30px;
+    }
+
+    /* styles for user reviews */
+
+
+    .col {
+        width: 33%;
+        float: left;
+    }
+
+    .ubr {
+        border: 3px ridge rgb(242, 247, 248);
+        background: none;
+        width: 85%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3%;
+        height: 120px;
+        padding: 2.5%;
+        float: left;
+    }
+
+    .ruser {
+        background: rgb(224, 242, 248);
+        border-bottom: 3px ridge white;
+        font-size: 20px;
+        text-align: left;
+        padding: 5px;
+        padding-left: 10px;
+    }
+
+    .remail {
+        font-size: 15px;
+        color: rgb(83, 148, 170);
+        padding: 3px;
+        padding-right: 10px;
+        border-top-right-radius: 50%;
+        float: right;
+    }
+
+    .rrating {
+        margin: 10px;
+        background: none;
+    }
+
+    .rtext {
+        width: 300px;
+        border-top: 3px double rgb(245, 251, 253);
+        padding-top: 12px;
+    }
+
+    .reviewstar {
+        height: 15px;
+    }
+
+</style>
+
+<body>
+
+    <center>
+
+        
+
+        {{!-- This area is where we display the business info and average rating --}}
+
+        <div id='businessNameDisplay'>
+            <h3 id='businessnamediv'>
+                <img src="https://i.imgur.com/ITgiiKr.png" id='globeImg'><br>
+                Pulverizing Patty{{businesses.business_name}}
+                <span id='businesscategorydiv'>Private Trainer{{categories.category_name}}</span></h3>
+
+            <div id='bRatings'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+            </div>
+        </div>
+
+
+
+
+        {{!-- This area contains a form for the user to request a quote to the business --}}
+
+        <form id='requestForm'>
+            <input type='submit' id='getquoteBtn' value='Request A Quote!'>
+        </form>
+
+
+
+        {{!-- This area is for user reviews of this business --}}
+
+        <div id='ubReviews'>
+
+            <div class='col col1'>
+            
+            <div class='ubr' id='rev1'>
+                <div class='ruser'>User {{jobsusername}}
+                <span class='remail'>email@fake.com {{email}}</span></div>
+                <div class='rrating'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                </div>
+                <div class='rtext'>So glad I decided to hire Patricia, I have lost 30lbs and feel healthier and
+                    stronger.</div>
+            </div>
+            <div class='ubr' id='rev2'>
+                <div class='ruser'>User {{jobsusername}}
+                <span class='remail'>email@fake.com {{email}}</span></div>
+                <div class='rrating'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                </div>
+                <div class='rtext'></div>I always leave my sessions with Patricia, exhausted, but knowing that I gave
+                my all.
+            </div>
+
+       
+        <div class='ubr' id='rev3'>
+            <div class='ruser'>User {{jobsusername}}
+            <span class='remail'>email@fake.com {{email}}</span></div>
+            <div class='rrating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            </div>
+            <div class='rtext'></div>Patricia is awesome, if you need a trainer look no further
+        </div>
+
+        </div>
+        {{!-- end col1 --}}
+
+        <div class='col col2'>
+
+        <div class='ubr' id='rev4'>
+            <div class='ruser'>User {{jobsusername}}
+            <span class='remail'>email@fake.com {{email}}</span></div>
+            <div class='rrating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            </div>
+            <div class='rtext'></div>Ex employee here! I quit after a week, Patty was just too mean, she scares me :)
+        </div>
+
+        <div class='ubr' id='rev5'>
+            <div class='ruser'>User {{jobsusername}}
+            <span class='remail'>email@fake.com {{email}}</span></div>
+            <div class='rrating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            </div>
+            <div class='rtext'></div>Great combination of cardio workouts and strength
+        </div>
+
+        <div class='ubr' id='rev6'>
+            <div class='ruser'>User {{jobsusername}}
+            <span class='remail'>email@fake.com {{email}}</span></div>
+            <div class='rrating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            </div>
+            <div class='rtext'></div>Check out my abs now…..
+        </div>
+
+        </div>
+        {{!-- end col2 --}}
+
+        <div class='col col3'>
+
+        <div class='ubr' id='rev7'>
+            <div class='ruser'>User {{jobsusername}}
+            <span class='remail'>email@fake.com {{email}}</span></div>
+            <div class='rrating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            </div>
+            <div class='rtext'></div>Is it summer yet, I can wait to show off my beach body !!!
+        </div>
+
+        <div class='ubr' id='rev8'>
+            <div class='ruser'>User {{jobsusername}}
+            <span class='remail'>email@fake.com {{email}}</span></div>
+            <div class='rrating'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+                <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            </div>
+            <div class='rtext'></div>Great combination of cardio workouts and strength
+        </div>
+
+        </div>
+        {{!-- end col3 --}}
+
+        </div>
+
+
+
+    </center>
+
+
+
+
+
+
+
+
+
+
+    {{!-- BACKEND NOTES:
+    I am using 'dummy' handlebars tags for now, which we can replace with working ones when we have them.
+    --> users get to this page from '/user-search', by clicking on a business. This is the business profile
+    --> we need handlebar tags or ajax calls to retrieve info for the business that the user clicked.
+    --> We want to access the following data:
+        1. Business Name, from businesses table
+        2. Business Bio, businesses table
+        3. Business' Category, from categories table (linked to businesses table by categoryId)
+        4. Jobs table data, related to this business and the user who is logged in
+            --> we GET jobs.rating, jobs.review, jobs.jobStatus, and jobs.cost
+
+    ****** AVERAGE RATING ******
+    ****************************
+    The ratings in #bRatings are the average rating for this business from jobs.rating
+    --> we need to calculate the average, and create a function that generates a star for each rating number
+    for example, an average rating of 4 should generate 4 stars in the #bRatings div. An average rating of 4.8 would
+    calculate 5 stars.
+    One star img HTML tag looks like this: <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+
+
+    ***** REQUEST A QUOTE FORM ******
+    *********************************
+    User can request a quote by clicking the #requestForm submit button
+    ---> we need a route that will POST this request, saving this in the jobs table with the current userId and businessId, 
+        creating a job with jobId and jobStatus.
+    ---> after posting the data to mysql, it should notify the user with an alert (or something similar?) that their request 
+        was sucessful, and then redirect them to either /user-home or back to this page, /user-business
+
+
+    ******* BUSINESS REVIEWS ********
+    *********************************
+    The reviews in #ubReviews are the 8 most recent or relevent reviews for this business. (we could also do a loop to
+    retrieve them all)
+    --> for each review, we need:
+        1. the review data (actual text) from jobs.review
+            -generate this data into .rtext divs
+        2. the username & email of the the person who posted the review: users.email and users.username, linked to jobs table via userId
+            -display this data in our .ruser divs
+        3. the star rating that goes with the review, via jobs.rating
+            -take the jobs.rating INT and generate a .reviewstar image for each number. i.e: if rating is 3, generate 3
+                .reviewstar images
+            -.reviewstar image looks like: <img src='https://i.imgur.com/vwpthwu.png' class='reviewstar'>
+            - the star images go into .rrating divs
+        4. The entire review section is in a div called #ubReviews. Each individual review is in a div called .ubr
+            each .ubr div contains .ruser (username), .remail (user email), .rrating (star rating), and .rtext (text review)
+    --}}
+
+    <script type='text-javascript'>
+        console.log('USER-BUSINESS: A non-business user will be directed to this page to view a business profile')
+    </script>
+</body>
+
+</html>

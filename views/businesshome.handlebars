@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giggit Business HOme Page</title>
+
+    <link rel="stylesheet" href="/assets/css/businessHome.css">
+
+</head>
+
+{{!-- <style>
+    * {
+        font-family: 'gruppo', cursive;
+    }
+
+    /* Column sizing... total= 86%. Negative space= 14% */
+    .col {
+        float: left;
+        margin-top: 4%;
+    }
+
+    #leftcol {
+        width: 35%;
+        margin-left: 4%;
+    }
+
+    #rightcol {
+        width: 51%;
+        margin-left: 10%;
+    }
+
+    /* Display username, email, and image in upper left area of the page*/
+    #businessNameDisplay {
+        border: 3px dashed rgb(188, 248, 186);
+        border-top-left-radius: 100%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+
+    #businessnamediv {
+        font-size: 40px;
+        color: rgb(49, 136, 165);
+    }
+
+    #businesscategorydiv {
+        font-size: 30px;
+        color: rgb(177, 225, 241);
+        padding-left: 15px;
+    }
+
+    #globeImg {
+        height: 80px;
+    }
+
+    #ratingsdiv {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 8%;
+    }
+
+    .starRating {
+        height: 30px;
+    }
+
+    /* styles for business jobs table */
+
+    #jobstableTitle {
+        font-size: 40px;
+        color: rgb(49, 136, 165);
+        border: 2px dashed rgb(177, 225, 241);
+        border-bottom: 2px dashed white;
+        padding-right: 30%;
+        padding-left: 30%;
+    }
+
+    .jobscol {
+        float: left;
+        width: 33%;
+    }
+
+    .colTitle {
+        color: rgb(49, 136, 165);
+        font-size: 25px;
+        font-weight: bold;
+        border-bottom: 1px ridge rgb(183, 232, 248);
+        padding: 5px;
+    }
+
+    .cell {
+        font-size: 18px;
+        border-bottom: 1px ridge rgb(230, 248, 253);
+        padding-left: 8px;
+        margin-top: 4px;
+        padding-bottom: 2px;
+        height: 30px;
+        color: rgb(8, 8, 59);
+    }
+
+    .jobcostC {
+        color: blue;
+    }
+
+    .quoteinput {
+        width: 50px;
+    }
+
+    .quotesubmit {
+        background: rgb(195, 233, 243);
+        border: 2px groove rgb(212, 236, 243);
+        text-shadow: 1px 1px white;
+    }
+    .quotesubmit:hover {
+        background: rgb(34, 121, 143);
+        color: white;
+        text-shadow: none;
+        border-style: ridge;
+    }
+
+    .checkmark {
+        height: 15px;
+    }
+
+</style> --}}
+
+<body>
+
+    <div class="row">
+
+        {{!-- LEFT COLUMN: BUSINESS INFO, BUSINESS RATING AND LINK TO FULL REVIEWS --}}
+        <div class="col" id='leftcol'>
+
+            {{!-- Div for business name and email --}}
+            <div id='businessNameDisplay'>
+                <h3 id='businessnamediv'>
+                    <img src="https://i.imgur.com/ITgiiKr.png" id='globeImg'>
+                    <span id='businessName'></span></h3>
+                <h4 id='businesscategorydiv'>Type of Business{{categories.category_name}}</h4>
+            </div>
+            {{!-- star rating goes here, need to "GET" jobs.rating integer and convert the number to number of
+            .starRating images to show. I can create half stars if we want to show more accurate ratings, or we can
+            round # to full stars --}}
+            <div id='ratingsdiv'>
+                <center>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='starRating'>
+                    <img src='https://i.imgur.com/vwpthwu.png' class='starRating'> {{jobs.rating_convertToImages}}
+                    <a href='/business-reviews' id='reviewLink'>View More...</a>
+                </center>
+            </div>
+
+        </div>
+
+        {{!-- RIGHT COLUMN: BUSINESS JOBS TABLE --}}
+        <div class="col" id='rightcol'>
+            <center>
+                {{!-- We need to "GET" this info using handlebars, these tags are temporary dummy tags until we have
+                real ones --}}
+
+                <div class='row' id='businessjobstable'><span id='jobstableTitle'>My Gigs</span><br><br>
+                    {{!-- COLUMN 1: "Customer", GET info from users.username to display usernames of customers who
+                    requested a quote--}}
+                    <div class="jobscol" id='custcol'>
+                        <div class='colTitle'>Customer</div>
+                    </div>
+
+                    {{!-- COLUMN 2: "Estimate", GET info from jobs.cost --}}
+                    <div class="jobscol" id='costcol'>
+                        <div class='colTitle'>Estimate</div>
+                    </div>
+
+                    {{!-- COLUMN 3: "Gig Status", GET info from jobs.jobStatus --}}
+                    <div class="jobscol" id='jscol'>
+                        <div class="colTitle">Gig Status</div>
+                    </div>
+
+                    {{!-- For Jobs Table, we need a function to determine which users have requested quotes from this
+                    business
+                    AND we need to know if the businesses has returned a quote or not.
+
+                    If this.business returned a quote:
+                    1. In mySql, "jobs.jobStatus" should be:
+                    ---> "Confirmation Needed" if the user has not accepted or denied yet
+                    ---> "Completed" if the user has accepted the quote.
+                    ---> "Cancelled" if the user has denied the quote.
+                    If the job status is "Completed" we will generate the text "Completed" AND an image of a checkmark
+                    next to it
+                    with src='https://i.imgur.com/goSfMfs.png' and class='checkmark' in div .jobstatusC
+                    2. we need to display the quote in column 2: "Estimate"
+                    3. we need to display current job status in column 3 as either "Confirmation Needed", "Completed",
+                    or "Cancelled"
+
+                    If this.business has NOT returned a quote yet:
+                    1. In mySql, "jobs.jobStatus" should be "Pending"
+                    2. we need to generate a form in col2 that looks like this:
+                    <form class='sendquoteForm' action='/' method='POST'>
+                        <input class='quoteinput' type='number' min='0' name='newquote'>
+                        <input type='submit' value='Give Quote' class='quotesubmit'>
+                    </form>
+                    The ACTION of the form should go to the route where we store this data to the jobs table.
+                    ---> We need a POST route to add quotes to jobs table
+                    ---> This route should post the quote to jobs.cost and then redirect user back to
+                    businesshome.handlebars
+                    3. After they submit the quote and get redirected back, we need to display current job status
+                    "Pending" in column 3
+                    and display the new quote value in col2 'estimate'
+                    --}}
+
+                </div>
+            </center>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    {{!-- Ajax call to get all business info for the specified business and dynamically construct the jobs table --}}
+    <script>
+
+        $.ajax({
+            url: 'http://localhost:3000/business/allinfo/{{user.userId}}',
+
+            method: 'GET'
+        }).then(function (data) {
+
+            console.log(data);
+
+            var tcustrow;
+            var tcostrow;
+            var tjsrow;
+            var jobStatusText = "";
+
+            $.each(data, function (i, data) {
+
+                var jobId = data.jobId;
+                // if else statements based on jobStatus to determine what to display
+                if (parseInt(data.jobStatus) === 1) {
+                    jobStatusText = "Pending";
+                    console.log(jobId);
+                    tcostrow = $('<div>')
+                    $(tcostrow).attr('class', 'cell jobcostC')
+                    $(tcostrow).html(`<form class='sendquoteForm' action='/jobs/quote/${jobId}' method='POST'><input class='quoteinput' type='number' min='0' name='newquote'><input type='submit' value='Give Quote' class='quotesubmit'></form>`)
+                }
+                else if (parseInt(data.jobStatus) === 2) {
+                    jobStatusText = "Confirmation Needed"   
+                    tcostrow = $('<div>')
+                    $(tcostrow).html(data.cost)
+                    $(tcostrow).attr('class', 'cell jobcostC')
+                }
+                else if (parseInt(data.jobStatus) === 3) {
+                    jobStatusText = "<div class='jobItem cell'> Completed <img class='checkmark' src='https://i.imgur.com/goSfMfs.png'></div>"
+                    tcostrow = $('<div>')
+                    $(tcostrow).html(data.cost)
+                    $(tcostrow).attr('class', 'cell jobcostC')
+                }
+                else if (parseInt(data.jobStatus) === 4) {
+                    jobStatusText = "Cancelled"
+                    tcostrow = $('<div>')
+                    $(tcostrow).html(data.cost)
+                    $(tcostrow).attr('class', 'cell jobcostC')
+                }
+                // construct the div to display the customer name
+                tcustrow = $('<div>'),
+                    $(tcustrow).html(data.username),
+                    $(tcustrow).attr('class', 'cell jobcustomerC'),
+                    $("#custcol").append(tcustrow),
+
+                    // construct the div to display the job status
+                    tjsrow = $('<div>'),
+                    $(tjsrow).html(jobStatusText),
+                    $(tjsrow).attr('class', 'cell jobstatusC'),
+                    $("#jscol").append(tjsrow)
+
+                // display job cost in the table
+                $("#costcol").append(tcostrow)
+
+                $('#businesscategorydiv').html(data.category_name);
+                //console.log(data.business_name+":"+data.category_name);
+                $('#businessName').html(data.business_name);
+
+            });
+        });
+    </script>
+
+    <script type='text/javascript'>
+        console.log('BUSINESSHOME: This is the homepage/profile for business users.')
+    </script>
+</body>

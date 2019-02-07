@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Corben|Fredericka+the+Great|Gruppo|Zilla+Slab+Highlight" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giggit! Reviews</title>
+
+    <link rel="stylesheet" href="/assets/css/userReview.css">
+
+</head>
+{{!-- <style>
+
+    * {
+        font-family: 'gruppo', cursive;
+    }
+
+#submitnewReview {
+    background: url('https://i.imgur.com/Dr6ePcy.jpg') no-repeat;
+    background-size: cover;
+    color: rgb(49, 136, 165);
+    width: 50%;
+    height: 340px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    border: 3px ridge rgb(60, 127, 150);
+}
+
+#formtitle {
+    background: rgb(60, 127, 150);
+    width: 100%;
+    height: 15%;
+    border-bottom: 3px ridge white;
+    color: white;
+    text-shadow: 2px 2px rgb(5, 34, 44);
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+#userrating {
+    border: 3px ridge white;
+    height: 10%;
+    width: 8%;
+    background: rgb(243, 243, 250);
+}
+
+#userrating:hover {
+    background: rgb(142, 189, 202);
+    color: black;
+    text-shadow: lightblue;
+}
+
+.rlabels {
+    background: none;
+    color: rgb(3, 31, 41);
+    text-shadow: 1px 1px white;
+    font-size: 20px;
+}
+
+#userreview {
+    width: 80%;
+    height: 40%;
+    padding-bottom: 10px;
+    border: 3px ridge white;
+    font-size: 18px;
+}
+
+#starsRating {
+    height: 8%;
+    background: none;
+    padding: -4px;
+}
+
+#ursubmit {
+        height: 30px;
+        width: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: rgb(6, 35, 43);
+        background: rgb(207, 233, 241);
+        text-shadow: 1px 1px rgb(193, 226, 235);
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border: 3px ridge white;
+        font-weight: bold;
+}
+
+#ursubmit:hover {
+    background: rgb(142, 189, 202);
+}
+
+
+</style> --}}
+
+<body>
+
+    <center>
+
+        <form id='submitnewReview'>
+            <div id='formtitle'>Create A Review</div><br>
+            <img src='https://i.imgur.com/vwpthwu.png' id='starsRating'>
+            <label for='userrating' class='rlabels'>Stars</label>
+            <select id='userrating'>
+                <option id='1' name='star'>1</option>
+                <option id='2' name='star'>2</option>
+                <option id='3' name='star'>3</option>
+                <option id='4' name='star'>4</option>
+                <option id='5' name='star' selected>5</option>
+            </select><br><br>
+
+            <textarea id='userreview' name='userreview'>What was your experience with this business?</textarea><br>
+            <input type='submit' value="Submit" id='ursubmit'> {{!-- action='/jobs/add-review/${jobId}' method='POST'>
+            --}}
+        </form>
+
+    </center>
+
+    {{!-- <script>
+        // Create a Review Page - user-review.handlebars
+        $("#ursubmit").on("click", function () {
+            console.log('Review has been submitted');
+            $.ajax({
+                url: '/jobs/add-review/${jobId}',
+                method: 'POST'
+            }).then(function (data) {
+                console.log(data);
+        })
+        })
+    </script> --}}
+
+    <script type='text/javascript'>
+        console.log('USER-REVIEW: A non-business user will be directed to this page when they want to rate and review a business.')
+    </script>
+
+</body>
+
+
+
+</html>

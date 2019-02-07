@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Corben|Fredericka+the+Great|Gruppo|Monoton|Faster+One|Zilla+Slab+Highlight"
+        rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giggit</title>
+
+    <link rel="stylesheet" href="/assets/css/home.css">
+
+</head>
+
+{{!-- <style>
+
+    * {
+        background: url('https://i.imgur.com/TZDSryU.jpg') no-repeat fixed;
+        background-size: cover;
+        font-family: 'gruppo', cursive;
+    }
+
+    #image {
+        float: left;
+        margin-left: 6%;
+        margin-top: 20%;
+    }
+
+    #signUp {
+        float: left;
+        color: rgb(16, 71, 107);
+        background: white;
+        margin-left: 5%;
+        margin-top: -2%;
+        margin-right: 5%;
+    }
+
+    #signupform {
+        border: 4px ridge white;
+        background: white;
+        color: white;
+        width: 400px;
+        height: 300px;
+        font-family: 'gruppo', cursive;
+        padding: 3%;
+        font-size: 25px;
+    }
+
+    .instruction, #skip {
+        background: white;
+        color: black;
+        font-family: 'gruppo', cursive;
+    }
+
+    .inputfield {
+        width: 80%;
+        padding-left: 30px;
+        padding-right:30px;
+        margin-bottom: 15px;
+    }
+
+
+    .btn {
+        background: rgb(214, 249, 253);
+        color: darkblue;
+        width: 22%;
+        float: right;
+        margin: 2%;
+    }
+
+    .btn:hover {
+        background: rgb(123, 230, 241);
+        color: darkblue;
+    }
+
+    #orloginInstruction {
+        color: rgb(23, 27, 85);
+        font-size: 20px;
+        background: rgb(185, 247, 255);
+        font-family: 'gruppo', cursive;
+        padding: 2%;
+        font-weight: bold;
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+
+
+    #login {
+        border: 4px ridge white;
+        background: white;
+        color: white;
+        width: 400px;
+        height: 160px;
+        font-family: 'gruppo', cursive;
+        padding: 3%;
+        font-size: 25px;
+    }
+
+    .isabus {
+        color: black;
+        font-size: 15px;
+        margin-bottom: 15px;
+
+    }
+
+    #isabusiness {
+        border: 2px ridge white;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        width: 97%;
+        text-align: center;
+    }
+    
+
+
+</style> --}}
+
+<body>
+
+    <!-- sign up form floats right-->
+    <div id='signUp'>
+        <form id='signupform'>
+            <!-- takes username as req.query.username-->
+            <div id='nameInstructions' class='instruction'>Name </div>
+            <input id='username' name='username' type='text' class='inputfield' required><br>
+            <!-- takes email as req.query.email -->
+            <div id='emailInstructions' class='instruction'>Email </div>
+            <input id='email' name='email' type='email' class='inputfield' required><br>
+            <!-- takes profile picture, not working in backend, not a priority in project -->
+            <!-- <div id='picInstructions' class='instruction'>Choose a profile picture</div><input id='pic' name='pic' type='file'
+                class='inputfield'><br> -->
+
+            <!-- returns boolean isABusiness as name=req.query.bus -->
+            <div id='isabusiness' class='instruction'>
+                Are you offering a service?<br>
+                <input type='radio' name='bus' id='bussyes' value='true'><label for='bussyes' class='isabus'>YES</label>
+                <input type='radio' name='bus' id='bussno' value='false'><label for='bussno' class='isabus'>NO</label><br>
+            </div>
+            <!-- takes a password as name=req.query.pass -->
+            <div id='passInstructions' class='instruction'>Create a secure password</div>
+            <input id='pass' name='pass' type='password' class='inputfield' required><br>
+            <!-- submit button directs user to route /signup in apiroutes.js -->
+            <input type='submit' id='done' name='done' value='Get Started' class='btn'>
+        </form>
+
+        <!-- div to direct user to login form if already a member -->
+        <div id='orloginInstruction'>Already A Member? Login</div>
+
+
+
+        <!-- form to log in, floats right -->
+        <form id='login' class="loginform">
+            <!-- takes email and password as req.query.emaillogin and req.query.passlogin -->
+            <div id='logEmail' class='instruction'>Email: </div><input type='email' name='emaillogin' id='emaillogin'
+                class='inputfield'><br>
+            <div id='logPass' class='instruction'>Password: </div><input type='password' name='passlogin' id='passlogin'
+                class='inputfield'><br>
+
+            <!-- Skip to next page without login, may take this out in the future but we can use it to navigate while we are building the site -->
+            <a href='/userhome' id='skip'>Skip This Step</a>
+            <input type='submit' id='ok' name='ok' value='OK' class='btn'>
+
+        </form>
+
+    </div>
+
+
+    <!-- image float left -->
+    <img id='image' src='https://i.imgur.com/E2cR58w.png'>
+</body>
+
+</html>

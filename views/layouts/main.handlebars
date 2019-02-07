@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Corben|Fredericka+the+Great|Gruppo|Zilla+Slab+Highlight" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="/assets/css/styles.css"> -->
+    <script src="/assets/javascript/app.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="./assets/css/styles.css"> -->
+
+
+    <title>GigGit</title>
+
+</head>
+
+<style>
+    * {
+        background: url('https://i.imgur.com/6Lr6GWS.jpg') no-repeat fixed;
+        background-size: cover;
+    }
+
+    #giggitHead {
+    font-family: 'Zilla Slab Highlight', cursive;
+    font-size: 70px;
+    color: rgb(239, 244, 248);
+    text-shadow: 2px 2px rgb(88, 145, 167);
+    margin-bottom: -20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+    #bar {
+        background: rgb(36, 65, 77);
+        border: 4px 4px ridge rgb(204, 221, 252);
+        width: 100%;
+        height: 50px;
+        /* float: right; */
+        margin-right: 5px;
+        padding: 2px;
+        padding-top: -2px;
+    }
+    #displayname {
+        font-family: 'gruppo', cursive;
+        font-size: 30px;
+        color: rgb(239, 244, 248);
+        text-shadow: 2px 2px rgb(88, 145, 167);
+        background: rgb(36, 65, 77);
+        font-weight: bold;
+        margin-left: 30px;
+        padding: 3px;
+        float: left;
+    }
+
+    .iconImage {
+        background: rgb(36, 65, 77);
+        height: 30px;
+        margin-right: 2px;
+        float: right;
+        padding: 5px;
+
+    }
+
+    #search {
+        font-family: 'gruppo', cursive;
+        font-size: 25px;
+        font-weight: bold;
+        color: rgb(242, 246, 248);
+        background: rgb(36, 65, 77);
+        margin-top: 8px;
+        padding: 4px;
+    }
+
+    #searchForm {
+        width: 250px;
+        color: rgb(36, 65, 77);
+        background: rgb(36, 65, 77);
+    }
+
+    #searchbar {
+        font-family: 'gruppo', cursive;
+        font-size: 22px;
+        background: rgb(242, 246, 248);
+        color: rgb(36, 65, 77);
+        margin-top: 5px;
+        padding: 2px;
+    }
+
+    .searchItem {
+        color: blue;
+        font-family: 'gruppo', cursive;
+        font-size: 22px;
+        width: 250px;
+    }
+
+    #searchbar:hover {
+        background: rgb(185, 208, 218);
+    }
+
+    #giggitHead {
+        float: none;
+    }
+
+
+   
+</style>
+
+<body>
+
+    {{!-- THIS HEADER BAR APPEARS ON TOP OF EVERY HANDLEBARS PAGE --}}
+    <header>
+        <div class='row icon' id='bar'>
+            <span id='allIcons'>
+
+                {{!-- USERNAME APPEARS ON THE LEFT --}}
+                {{#if user.username}}
+                <span id='displayname'>Welcome {{user.username}}</span>
+                {{else}}
+                <span id='displayname'>Welcome Guest</span>
+                {{/if}}
+
+
+                {{!-- FOLLOWING ICONS APPEAR ON THE RIGHT (in reverse order, because they are floating) --}}
+
+
+
+                {{!-- LOGOUT ICON --}}
+                {{!-- ***************************** --}}
+                {{#if user.isABusiness}}
+                <span class='iconImage'><a href='/logout' id='logoutlink'><img src="https://i.imgur.com/qAF51nm.png" title="logout"
+                            class='iconImage' id='logout-icon'></span>
+                {{else}}
+                <span class='iconImage'><a href='/logout' id='logoutlink'><img src="https://i.imgur.com/qAF51nm.png" title="logout"
+                            class='iconImage' id='logout-icon'></a></span>
+                {{/if}}
+
+                {{!-- SEARCH BAR AREA: includes form, label, and icon for submit button --}}
+                {{!-- *********************************************** --}}
+                {{#if user.isABusiness}}
+                <span id='entireSearchBar'>
+                    {{!-- search icon / form submit --}}
+                    <span class='iconImage'><a href='/business-search'><img src="https://i.imgur.com/4VQrnvT.png" title="search"
+                                class='iconImage' id='search-icon' type='submit'></a></span>
+                    {{!-- with ajax, each .searchItem is appended to the dropdown #searchbar, which appears here in
+                    #searchForm--}}
+                    <form id='searchForm' class='iconImage' action='/categories' method="GET">
+                        <select id='searchbar' name='searchbar'></select>
+                    </form>
+                    <span class='iconImage' id='search'>Search: </span></span>
+                {{else}}
+                <span id='entireSearchBar'>
+                    {{!-- search icon / form submit --}}
+                    <span class='iconImage'><a href='/user-search'><img src="https://i.imgur.com/4VQrnvT.png" title="search"
+                                class='iconImage' id='search-icon' type='submit'></a></span>
+                    {{!-- with ajax, each .searchItem is appended to the dropdown #searchbar, which appears here in
+                    #searchForm--}}
+                    <form id='searchForm' class='iconImage' action='/categories' method="GET">
+                        <select id='searchbar' name='searchbar'></select>
+                    </form>
+                    <span class='iconImage' id='search'>Search: </span></span>
+                {{/if}}
+
+
+                {{!-- EDIT PROFILE ICON --}}
+                {{!-- *************************** --}}
+                {{#if user.isABusiness}}
+                <span class='iconImage'><a href='/business-edit'><img src="https://i.imgur.com/OTZf4Dp.png" title="edit"
+                            class='iconImage' id='edit-icon'></a></span>
+                {{else}}
+                <span class='iconImage'><a href='/user-edit'><img src="https://i.imgur.com/OTZf4Dp.png" title="edit"
+                            class='iconImage' id='edit-icon'></a></span>
+                {{/if}}
+
+
+                {{!-- HOME ICON --}}
+                {{!-- ******************* --}}
+                {{#if user.isABusiness}}
+                <span class='iconImage'><a href='/business-home'><img src='https://i.imgur.com/YCZLCM3.png' title='home'
+                            class='iconImage' id='home-icon'></a></span>
+                {{else}}
+                <span class='iconImage'><a href='/user-home'><img src='https://i.imgur.com/YCZLCM3.png' title='home'
+                            class='iconImage' id='home-icon'></a></span>
+                {{/if}}
+
+
+            </span>
+
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+    <center>
+        <header>
+            <h2 id='giggitHead'>GigGit</h2>
+        </header>
+    </center>
+
+
+    {{{ body }}}
+
+    {{!-- <img id='image' src='/workersimage'> --}}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+
+    <script>
+
+        //ajax call for dropdown searchbar, to appear on ALL handlebars pages
+        $.ajax({
+            url: '/categories',
+            method: 'GET'
+        }).then(function (data) {
+            var count = 0;
+            var $option;
+
+            for (var i = 0; i < data.length; i++) {
+
+                //check console log to ensure the route is working
+                console.log(data[i].category_name);
+
+                //for each category, we create a tag and store the data with a 'name' attribute.
+                $option = $("<option>");
+                $option.attr('class', 'searchItem');
+                $option.attr('name', data[i].category_name);
+                $option.text(data[i].category_name);
+
+                //appending each of the categories to the dropdown menu
+                $("#searchbar").append($option);
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

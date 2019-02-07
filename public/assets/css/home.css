@@ -1,0 +1,96 @@
+    * {
+        background: url('https://i.imgur.com/TZDSryU.jpg') no-repeat fixed;
+        background-size: cover;
+        font-family: 'gruppo', cursive;
+    }
+
+    #image {
+        float: left;
+        margin-left: 6%;
+        margin-top: 20%;
+    }
+
+    #signUp {
+        float: left;
+        color: rgb(16, 71, 107);
+        background: white;
+        margin-left: 5%;
+        margin-top: -2%;
+        margin-right: 5%;
+    }
+
+    #signupform {
+        border: 4px ridge white;
+        background: white;
+        color: white;
+        width: 400px;
+        height: 300px;
+        font-family: 'gruppo', cursive;
+        padding: 3%;
+        font-size: 25px;
+    }
+
+    .instruction, #skip {
+        background: white;
+        color: black;
+        font-family: 'gruppo', cursive;
+    }
+
+    .inputfield {
+        width: 80%;
+        padding-left: 30px;
+        padding-right:30px;
+        margin-bottom: 15px;
+    }
+
+
+    .btn {
+        background: rgb(214, 249, 253);
+        color: darkblue;
+        width: 22%;
+        float: right;
+        margin: 2%;
+    }
+
+    .btn:hover {
+        background: rgb(123, 230, 241);
+        color: darkblue;
+    }
+
+    #orloginInstruction {
+        color: rgb(23, 27, 85);
+        font-size: 20px;
+        background: rgb(185, 247, 255);
+        font-family: 'gruppo', cursive;
+        padding: 2%;
+        font-weight: bold;
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+
+
+    #login {
+        border: 4px ridge white;
+        background: white;
+        color: white;
+        width: 400px;
+        height: 160px;
+        font-family: 'gruppo', cursive;
+        padding: 3%;
+        font-size: 25px;
+    }
+
+    .isabus {
+        color: black;
+        font-size: 15px;
+        margin-bottom: 15px;
+
+    }
+
+    #isabusiness {
+        border: 2px ridge white;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        width: 97%;
+        text-align: center;
+    }

@@ -1,0 +1,71 @@
+<style>
+
+    * {
+        background: url('../backgroundimage') no-repeat fixed;
+        background-size: cover;
+    }
+
+
+    #giggitHead {
+        font-family: 'Zilla Slab Highlight', cursive;
+        font-size: 70px;
+        color: rgb(239, 244, 248);
+        text-shadow: 2px 2px rgb(88, 145, 167);
+        margin-bottom: -20px;
+        font-weight: bold;
+    }
+
+    button {
+        background: rgb(118, 198, 252);
+        width: 350px;
+        height: 180px;
+        border: 3px ridge rgb(40, 28, 109);
+    }
+
+    .btn {
+        /* width: 350px;
+        height: 180px; */
+        font-family: 'gruppo', cursive;
+        font-size: 35px;
+        color: rgb(40, 28, 109);
+        background: rgb(118, 198, 252);
+        text-shadow: 2px 2px rgb(239, 244, 248);
+        
+        /* opacity: .3; */
+    }
+
+    button:hover {
+        color: white;
+        opacity: .3;
+    }
+    .btn:hover {
+        color: white;
+    }
+
+    #hire {
+        float: left;
+        margin-left: 250px;
+    }
+
+    #gethired {
+        float: right;
+        margin-right: 250px;
+    }
+
+
+
+</style>
+
+{{!-- <center><h4 id='login'> Welcome {{user}}!</h4></center> --}}
+{{!-- <center>
+        <header>
+            <h2 id='giggitHead'>GigGit</h2>
+        </header>
+</center>  --}}
+
+    <form action='/findgig' method="GET">
+        <button id='hire'><a href='/userhome.handlebars' class='btn'>Find Contractor</a></button>
+    </form>
+     <button id='gethired'><a href='/businesshome.handlebars' class='btn'>Post Ad</a></button>
+
+

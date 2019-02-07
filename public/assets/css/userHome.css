@@ -1,0 +1,157 @@
+    * {
+        font-family: 'gruppo', cursive;
+    }
+
+    /*total width of columns= 84% ; negative space = 16% */
+    .column {
+        float: left;
+        margin-top: 4%;
+    }
+
+    #leftcolumn {
+        width: 37%;
+        margin-left: 6%;
+        margin-right: 2%;
+    }
+
+    #rightcolumn {
+        width: 47%;
+        margin-right: 6%;
+        margin-left: 2%;
+    }
+
+    /* Display username, email, and image in upper left area of the page*/
+    #userDisplayName {
+        border: 3px dashed rgb(188, 248, 186);
+        border-top-left-radius: 100%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+
+    #namedisplay {
+        font-size: 40px;
+        color: rgb(49, 136, 165);
+    }
+
+    #emaildisplay {
+        font-size: 30px;
+        color: rgb(177, 225, 241);
+        padding-left: 15px;
+    }
+
+    /* Styles for tables: user-reviews and user-jobs */
+    #user-reviews {
+        margin-top: 12%;
+    }
+
+    .colHead {
+        color: rgb(49, 136, 165);
+        font-weight: bold;
+        border-bottom: 1px ridge rgb(183, 232, 248);
+        padding: 5px;
+    }
+
+    .tableHead {
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(49, 136, 165);
+        border-top: 3px dashed rgb(177, 225, 241);
+    }
+
+    .rateItem,
+    .jobItem {
+        border-bottom: 1px ridge rgb(230, 248, 253);
+        padding-left: 8px;
+        height: 30px;
+        color: rgb(8, 8, 59);
+    }
+
+    .costcell {
+        color: blue;
+    }
+
+    #reviewHead {
+        border-left: 3px ridge rgb(177, 225, 241);
+        border-top-right-radius: 100%;
+        padding-left: 8px;
+    }
+
+    .ratetable {
+        float: left;
+        width: 30%;
+    }
+
+    #jobHead {
+        text-align: right;
+        border-right: 3px ridge rgb(177, 225, 241);
+        border-top-left-radius: 100%;
+        padding-right: 8px;
+    }
+
+    .jobtable {
+        width: 25%;
+        float: left;
+    }
+
+    .cell {
+        padding-bottom: 5px;
+    }
+
+    /* styling for Jobs table, column 4 buttons */
+    .cellbtn {
+        height: 20px;
+        width: 60px;
+        margin: 5px;
+        color: rgb(6, 35, 43);
+        text-shadow: 1px 1px white;
+    }
+
+    .ratenow {
+        color: rgb(24, 54, 63);
+        text-shadow: 1px 1px rgb(212, 236, 243);
+    }
+
+    .ratenow:hover {
+        color: white;
+        border: none;
+        padding: 5px;
+    }
+
+    .accept {
+        border: 2px groove rgb(206, 253, 205);
+        background: rgb(188, 248, 186);
+    }
+
+    .accept:hover {
+        color: rgb(157, 252, 157);
+    }
+
+    .deny {
+        border: 2px groove rgb(255, 246, 246);
+        background: rgb(255, 238, 238);
+    }
+
+    .deny:hover {
+        color: rgb(247, 196, 196);
+    }
+
+    .cellbtn:hover {
+        background: rgb(34, 121, 143);
+        text-shadow: none;
+        border-style: ridge;
+    }
+
+    /* styling for images on user-home page */
+    #dividerImg {
+        width: 100%;
+    }
+
+    .ratestar,
+    .checkmark {
+        height: 15px;
+    }
+
+    #userdisplayimage {
+        height: 80px;
+    }

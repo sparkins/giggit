@@ -1,0 +1,41 @@
+    #content {
+        margin-top: 4%;
+    }
+
+    .entireUser {
+        border: 5px ridge rgb(183, 228, 236);
+        width: 600px;
+        background-color: white;
+        margin: 15px;
+        padding: 25px;
+    }
+
+    .businessName, .userInfo {
+        color: rgb(9, 17, 39);
+        font-size: 30px;
+        font-weight: bold;
+        font-family: "Gruppo", cursive;
+        padding: 10px 15px 15px 15px;
+        margin-bottom: 10px;
+        background: rgb(183, 228, 236);
+        border: 2px 2px white;
+        text-shadow: 2px 2px white;
+    }
+
+    .jobTitle {
+        color: rgb(103, 103, 182);
+        font-size: 25px;
+        font-family: "Gruppo", cursive;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .desc {
+        color: rgb(7, 23, 29);
+        font-size: 18px;
+        font-family: "Gruppo", cursive;
+        font-weight: bold;
+        padding: 15px;
+        width: 550px;
+        background: rgb(224, 245, 247);
+    }

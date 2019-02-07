@@ -1,0 +1,54 @@
+* {
+    font-family: 'gruppo', cursive;
+}
+
+    .col {
+        margin-top: 4%;
+        width: 33%;
+        float: left;
+    }
+
+    .ubr {
+        border: 3px ridge rgb(242, 247, 248);
+        background: none;
+        width: 85%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 3%;
+        height: 120px;
+        padding: 2.5%;
+        float: left;
+    }
+
+    .ruser {
+        background: rgb(224, 242, 248);
+        border-bottom: 3px ridge white;
+        font-size: 20px;
+        text-align: left;
+        padding: 5px;
+        padding-left: 10px;
+    }
+
+    .remail {
+        font-size: 15px;
+        color: rgb(83, 148, 170);
+        padding: 3px;
+        padding-right: 10px;
+        border-top-right-radius: 50%;
+        float: right;
+    }
+
+    .rrating {
+        margin: 10px;
+        background: none;
+    }
+
+    .rtext {
+        width: 300px;
+        border-top: 3px double rgb(245, 251, 253);
+        padding-top: 12px;
+    }
+
+    .reviewstar {
+        height: 15px;
+    }

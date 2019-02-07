@@ -1,0 +1,112 @@
+    * {
+        font-family: 'gruppo', cursive;
+    }
+
+    /* Column sizing... total= 86%. Negative space= 14% */
+    .col {
+        float: left;
+        margin-top: 4%;
+    }
+
+    #leftcol {
+        width: 35%;
+        margin-left: 4%;
+    }
+
+    #rightcol {
+        width: 51%;
+        margin-left: 10%;
+    }
+
+    /* Display username, email, and image in upper left area of the page*/
+    #businessNameDisplay {
+        border: 3px dashed rgb(188, 248, 186);
+        border-top-left-radius: 100%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+
+    #businessnamediv {
+        font-size: 40px;
+        color: rgb(49, 136, 165);
+    }
+
+    #businesscategorydiv {
+        font-size: 30px;
+        color: rgb(177, 225, 241);
+        padding-left: 15px;
+    }
+
+    #globeImg {
+        height: 80px;
+    }
+
+    #ratingsdiv {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 8%;
+    }
+
+    .starRating {
+        height: 30px;
+    }
+
+    /* styles for business jobs table */
+
+    #jobstableTitle {
+        font-size: 40px;
+        color: rgb(49, 136, 165);
+        border: 2px dashed rgb(177, 225, 241);
+        border-bottom: 2px dashed white;
+        padding-right: 30%;
+        padding-left: 30%;
+    }
+
+    .jobscol {
+        float: left;
+        width: 33%;
+    }
+
+    .colTitle {
+        color: rgb(49, 136, 165);
+        font-size: 25px;
+        font-weight: bold;
+        border-bottom: 1px ridge rgb(183, 232, 248);
+        padding: 5px;
+    }
+
+    .cell {
+        font-size: 18px;
+        border-bottom: 1px ridge rgb(230, 248, 253);
+        padding-left: 8px;
+        margin-top: 4px;
+        padding-bottom: 2px;
+        height: 30px;
+        color: rgb(8, 8, 59);
+    }
+
+    .jobcostC {
+        color: blue;
+    }
+
+    .quoteinput {
+        width: 50px;
+    }
+
+    .quotesubmit {
+        background: rgb(195, 233, 243);
+        border: 2px groove rgb(212, 236, 243);
+        text-shadow: 1px 1px white;
+    }
+    .quotesubmit:hover {
+        background: rgb(34, 121, 143);
+        color: white;
+        text-shadow: none;
+        border-style: ridge;
+    }
+
+    .checkmark {
+        height: 15px;
+    }

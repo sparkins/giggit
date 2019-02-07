@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Corben|Fredericka+the+Great|Gruppo|Zilla+Slab+Highlight" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GigGit</title>
+</head>
+
+<style>
+    * {
+        background: url('../backgroundimage') no-repeat fixed;
+        background-size: cover;
+    }
+
+    #giggitHead {
+        font-family: 'Zilla Slab Highlight', cursive;
+        font-size: 70px;
+        color: rgb(239, 244, 248);
+        text-shadow: 2px 2px rgb(88, 145, 167);
+        margin-bottom: 1px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    #octopus {
+        width: 150px;
+        margin-bottom: 2x;
+        margin-top: 10px;
+    }
+
+
+    #formDiv {
+        color: rgb(16, 71, 107);
+        border: 4px ridge white;
+        width: 400px;
+        padding: 10px;
+        
+    }
+
+    #createGig {
+        /* border: 4px ridge white; */
+        background: white;
+        color: white;
+        font-family: 'gruppo', cursive;
+        padding: 2px;
+        font-size: 25px;
+        z-index: initial;
+    }
+
+    .choice {
+        background: white;
+        color: black;
+        font-size: 15px;
+    }
+
+    /* .instruct {
+        background: rgb(236, 254, 255);
+        color: rgb(27, 39, 92);
+        font-weight: bold;
+        border: 2px ridge white;
+    } */
+
+    /* #what {
+        margin-bottom: -25px;
+    }
+
+    #why {
+        margin-top: 4px;
+        margin-bottom: 2px;
+    }
+
+    #jobdescription {
+        margin-top: 10px;
+        background: rgb(244, 253, 253);
+        color: rgb(27, 39, 92);
+        font-size: 20px;
+        border: 2px ridge white;
+        font-family: 'gruppo', cursive;
+    } */
+
+    #okgig {
+        background: rgb(214, 249, 253);
+        color: darkblue;
+        width: 100px;
+        border: 3px ridge white;
+    }
+    #okgig:hover {
+        background: rgb(123, 230, 241);
+        color: darkblue;
+    }
+
+    #formInstruction {
+        font-family: 'gruppo', cursive;
+        font-size: 25px;
+    }
+
+</style>
+
+
+<body>
+
+    <center>
+        <header>
+            <h2 id='giggitHead'>GigGit</h2><img src='/gifimage' id='octopus'>
+        </header>
+    </center>
+
+    <center>
+        <div id='formInstruction'>What type of service are you offering?</div>
+        <div id='formDiv'>
+            <!-- <form id='createGig'>
+
+                need separate pages for each table
+                first page - if business, ask business name
+                second page - ask category
+
+                 <div class='instruct' id='what'>Job Title:</div><br>
+                <input type='radio' name='title' id='accounting'><label for='accounting' class='choice'>Accounting/Finance</label><br>
+                <input type='radio' name='title' id='childcare'><label for='childcare' class='choice'>Child Care</label><br>
+                <input type='radio' name='title' id='computer'><label for='computer' class='choice'>Computer</label><br>
+                <input type='radio' name='title' id='creative'><label for='creative' class='choice'>Creative</label><br>
+                <input type='radio' name='title' id='domestic'><label for='domestic' class='choice'>Domestic</label><br>
+                <input type='radio' name='title' id='education'><label for='education' class='choice'>Education</label><br>
+                <input type='radio' name='title' id='events'><label for='events' class='choice'>Events</label><br>
+                <input type='radio' name='title' id='labor'><label for='labor' class='choice'>Labor</label><br>
+                <input type='radio' name='title' id='painting'><label for='painting' class='choice'>Painting</label><br>
+                <input type='radio' name='title' id='security'><label for='security' class='choice'>Security</label><br>
+                <input type='radio' name='title' id='transport'><label for='transport' class='choice'>Transport</label><br>
+                <input type='radio' name='title' id='writing'><label for='writing' class='choice'>Writing</label><br>
+                <input type='radio' name='title' id='other'><label for='other' class='choice'>other</label><br>
+
+                <div class='instruct' id='why'>Posting Body:</div>
+                <textarea name="jobdescription" style="width:350px;height:130px;" id='jobdescription'></textarea><br><br>
+                
+                <input type='submit' name='okgig' id='okgig' value='Done'> -->
+
+
+            <!-- </form> -->
+        </div>
+
+        <!-- <input type='submit' for='createGig' value='OK'> -->
+    </center>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+
+$.ajax({
+    url: '/categories',
+    method: 'GET'
+}).then(function(data){
+
+    console.log(data);
+
+    var $form = $("<form>");
+    var okgig = $("<br><button type='submit' id='okgig'>OK</button><br>");
+    var $input;
+    var $label;
+
+    for(var i=0; i < data.length; i++){
+
+        $input = $("<input>");
+        $label = $("<label>");
+        
+
+        $input.attr("type", 'radio');
+        $input.attr('name', 'title');
+        $input.attr('value', data[i].category_name);
+        $input.attr('id', data[i].category_name);
+
+        $label.attr('class', 'choice');
+        $label.html(data[i].category_name);
+        $label.attr('for', data[i].category_name);
+
+        
+        
+        $form.append($input, $label, "<br>");
+        $form.append(okgig);
+        // $form.append($label);
+        $form.attr('id', 'createGig');
+        $form.attr('action', '/');
+        $form.attr('method', 'GET');
+
+        $form.append()
+        // $form.attr('id', 'createGig');
+        $("#formDiv").append($form);
+
+    }
+
+    //form createGig should go to route that stores the category and redirects to the next page, postad2.html
+
+})
+
+</script>
+
+
+</body>
+
+</html>

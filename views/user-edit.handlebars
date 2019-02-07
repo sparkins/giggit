@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Corben|Fredericka+the+Great|Gruppo|Zilla+Slab+Highlight" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Account Settings</title>
+</head>
+
+<style>
+
+* {
+    font-family: 'gruppo', cursive;
+}
+
+#editingforms {
+    width: 45%;
+    margin-top: 6%;
+    background: rgb(177, 225, 241);
+}
+
+.editForm {
+    background: rgb(177, 225, 241);
+    font-size: 22px;
+    text-align: left;
+    padding: 10px;
+}
+
+.editinput {
+    text-align: right;
+    background: rgb(243, 250, 253);
+    width: 70%;
+    height: 15px;
+    border: 2px ridge white;
+}
+
+label, .editlabel {
+    background: rgb(177, 225, 241);
+    color: rgb(49, 136, 165);
+    text-align: left;
+    font-weight: bold;
+}
+
+.currentinfo {
+    color: rgb(92, 144, 161);
+    background: rgb(177, 225, 241);
+
+}
+
+.editsubmit {
+    background: rgb(139, 187, 207);
+    color: rgb(22, 62, 78);
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    padding: 2px;
+    text-align: center;
+    border: 2px ridge white;
+}
+
+.editsubmit:hover {
+    background: rgb(65, 92, 104);
+    color: white;
+}
+
+.editHeaders {
+    font-size: 30px;
+    padding: 10px;
+    background: rgb(65, 92, 104);
+    color: rgb(220, 241, 248);
+    text-shadow: 0px 1px white;
+    border-bottom: 2px ridge white;
+}
+
+.editcol {
+    float: left;
+    width: 50%;
+    background: rgb(177, 225, 241);
+}
+.right {
+    text-align: right;
+}
+
+#passwordnote {
+    font-size: 15px;
+    color: black;
+    background: rgb(177, 225, 241);
+}
+
+
+
+</style>
+
+<body>
+    
+
+
+
+    <center>
+
+        {{!-- Div containing all 3 forms --}}
+        <div id='editingforms'>
+
+
+            {{!-- FORM 1: CHANGE USERNAME --}}
+            <div id='editnameHeader' class='editHeaders'>Change Username</div>
+
+            <form id='useredit' class='editForm'>
+                {{!-- Left column: contains labels --}}
+                <div class="editcol left">
+                    <div class='editlabel'>Current Username:</div><br>
+                    <label for='newusername' class='editlabel'>New Username:</label>
+                </div>
+                {{!-- Right column: contains input fields and current username --}}
+                <div class='editcol right'>
+                    <div class='currentinfo'>Example Name {{user}}</div><br>
+                    <input id='newusername' name='newusername' class='editinput'>
+                </div>
+                {{!-- Submit button, center aligned via float --}}
+                <input type='submit' value='OK' class='editsubmit'>
+            </form>
+
+
+            {{!-- FORM 2: UPDATE EMAIL ADDRESS. --}}
+            <div id='editemailHeader' class='editHeaders'>Update Email Address</div>
+
+            <form id='usereditemail' class='editForm'>
+                {{!-- Left column: contains labels --}}
+                <div class="editcol left">
+                    <div class='editlabel'>Current Email:</div><br>
+                    <label for='newuseremail' class='editlabel'>New Email:</label>
+                </div>
+                {{!-- Right column: contains input fields and current email --}}
+                <div class='editcol right'>
+                    <div class='currentinfo'>Example@email.com {{email}}</div><br>
+                    <input id='newuseremail' name='newuseremail' class='editinput'>
+                </div>
+                {{!-- Submit button, center aligned via float --}}
+                <input type='submit' value='OK' class='editsubmit'>
+            </form>
+
+
+            {{!-- FORM 3: EDIT PASSWORD --}}
+            <div id='editpassHeader' class='editHeaders'>Edit Password</div>
+
+            <form id='usereditpass' class='editForm'>
+                {{!-- Left column: contains labels --}}
+                <div class="editcol left">
+                    <label for='confirmpassword' class='editlabel'>Confirm Current Password:</label><br>
+                    <label for='newuserpassword' class='editlabel'>New Password:</label>
+                </div>
+                {{!-- Right column: contains input fields --}}
+                <div class='editcol right'>
+                    <input id='confirmpassword' name='confirmpassword' class='editinput' type='password'><br>
+                    <input id='newuserpassword' name='newuserpassword' class='editinput' type='password'><br>
+                    <span id='passwordnote'>Passwords are case sensitive.</span>
+                </div>
+                {{!-- Submit button, center aligned via float --}}
+                <input type='submit' value='OK' class='editsubmit'>
+            </form>
+
+        </div>
+
+    </center>
+
+    {{!-- NOTES FOR BACKEND:
+
+    Handlebars:
+    --> we need handlebars {{tags}} for the following:
+    1. current user's email address {{email}}
+    2. current user's password {{pass}}
+
+    Form #useredit:
+    --> allows the user to change their username. New username value is saved as 'req.query.newusername'
+    --> we need a route to POST that data to users.username in mysql
+    --> the route should update the data and then redirect the user to '/user-edit',
+    refreshed so that the page is updated with the new username
+
+    Form #usereditemail:
+    --> allows user to change their email. New email value is saved as 'req.query.newuseremail'
+    --> we need a route to POST that data to users.email in mysql
+    --> the route should update the data and then redirect user back to '/user-edit',
+    refresh page so that it is updated to display the new email
+
+    Form #usereditpass:
+    --> allows user to change their password. New password value is saved as 'req.query.newuserpassword'
+    --> first input box is to confirm the current password for security purposes
+    --> The value of the password confirmation is 'req.query.confirmpassword'
+    --> we need to GET the users.password with handlebars (above) and check that they have typed the correct password
+    in the input field.
+    --> aka the route checks that req.query.confirmpassword = users.password
+    --> The route should then POST req.query.newuserpassword data to users.password in mysql
+    --> the submit button should only direct the user to this route IF req.query.confirmpassword matches the current
+    password in users.password
+    --> If req.query.confirmpassword != users.password, the form should NOT submit.
+    --> If req.query.confirmpassword = users.password, the form should go to a route that updates the new data and then
+    redirects
+    user back to '/user-edit', refresh the page so that it is updated with the new password
+    --}}
+
+
+
+
+
+
+
+
+
+
+
+    <script type='text/javascript'>
+        console.log('USER-EDIT: This is a settings page where a non-business user can edit their login information.');
+    </script>
+</body>
+
+</html>
