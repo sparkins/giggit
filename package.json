@@ -20,7 +20,7 @@
   "homepage": "https://github.com/sparkins/gig-getter#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "method-override": "^3.0.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.3",
